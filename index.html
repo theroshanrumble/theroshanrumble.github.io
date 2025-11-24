@@ -411,6 +411,18 @@ header {
     
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+/* Align header content with page width */
+.header-inner {
+    max-width: 1120px;      /* SAME width as your content */
+    margin: 0 auto;         /* centers the header */
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;  /* brand on left, menu on right */
+    align-items: center;
+
+    padding: 0 20px;        /* optional side padding */
+}
 
 /* logo + title grouped together cleanly */
 .brand {
@@ -434,27 +446,33 @@ body {
 <body>
   <div class="page">
     <!-- HEADER -->
-    <header>
-      <div class="brand">
-        <div class="brand-logo">
-    <a href="index.html">
-        <img src="trr-logo.png" alt="The Roshan Rumble logo" />
-    </a>
-</div>
-        <div>
-          <div class="brand-text-title">The Roshan Rumble (TRR)</div>
-          <div class="brand-text-sub">Community Dota 2 League • SEA</div>
+ <header>
+    <div class="header-inner">
+
+        <div class="brand">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="trr-logo.png" alt="The Roshan Rumble logo" />
+                </a>
+            </div>
+
+            <div>
+                <div class="brand-text-title">The Roshan Rumble (TRR)</div>
+                <div class="brand-text-sub">Community Dota 2 League • SEA</div>
+            </div>
         </div>
-      </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#seasons">Seasons</a>
-        <a href="#team">TRR Team</a>
-        <a href="#socials">Socials</a>
-        <a href="rules.html">Rules & Updates</a>
-        <a href="formats.html">Brackets & League</a> 
-      </nav>
-    </header>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#seasons">Seasons</a>
+            <a href="#team">TRR Team</a>
+            <a href="#socials">Socials</a>
+            <a href="rules.html">Rules & Updates</a>
+            <a href="formats.html">Brackets & League</a>
+        </nav>
+
+    </div>
+</header>
 
     <!-- HERO -->
     <section class="hero">
