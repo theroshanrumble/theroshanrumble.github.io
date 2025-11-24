@@ -231,7 +231,875 @@
       font-size: 12px;
       color: var(--muted);
     }
-  </style>
+  
+    /* --- TRR global sticky header --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(15, 6, 3, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(248,250,252,0.06), 0 18px 35px rgba(15,23,42,0.9);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .brand-text-title {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(30,64,175,0.9);
+      border-color: #f97316;
+      transform: translateY(-1px);
+    }
+
+    body {
+      padding-top: 120px;
+    }
+
+    /* Slightly larger base text for readability */
+    .page p,
+    .page li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* --- TRR Watermark Background --- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 900px;
+      height: 900px;
+      background: url('trr-logo.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.04;
+      transform: translate(-50%, -50%) rotate(0deg);
+      z-index: -1;
+      pointer-events: none;
+      animation: trrWatermarkRotate 45s linear infinite;
+    }
+
+    @keyframes trrWatermarkRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <div class="title">TRR – Brackets & League Formats</div>
+        <div class="subtitle">
+          Simple interactive templates for Double Elimination brackets and League / Group tables.
+        </div>
+      </div>
+      <div class="back">
+        <a href="index.html">← Back to main site</a>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="double">Double Elimination</button>
+      <button class="tab-btn" data-tab="league">League / Groups</button>
+    </div>
+
+    <!-- Double Elim TAB -->
+    <div id="tab-double" class="tab-content">
+      <div class="section-title">🧱 Double Elimination Bracket (8-team template)</div>
+      <div class="section-sub">
+        Fill in team names and scores. This is a visual sheet for casting / admin view.  
+        (Data is not saved anywhere – it’s meant for screen-share or quick reference.)
+      </div>
+
+      <div class="bracket-grid">
+        <!-- Upper bracket -->
+        <div class="round-column">
+          <div class="round-title">Upper – Round 1</div>
+
+          <!-- UB R1 Match 1 -->
+          <div class="match-card">
+            <div class="match-label">UB R1 – Match 1</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- UB R1 Match 2 -->
+          <div class="match-card">
+            <div class="match-label">UB R1 – Match 2</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 3" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 4" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- UB R1 Match 3 -->
+          <div class="match-card">
+            <div class="match-label">UB R1 – Match 3</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 5" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 6" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <!-- UB R1 Match 4 -->
+          <div class="match-card">
+            <div class="match-label">UB R1 – Match 4</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 7" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Team 8" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Upper semis -->
+        <div class="round-column">
+          <div class="round-title">Upper – Semifinals</div>
+
+          <div class="match-card">
+            <div class="match-label">UB SF – Match 1</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner M1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner M2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="match-card">
+            <div class="match-label">UB SF – Match 2</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner M3" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner M4" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="round-title" style="margin-top:10px;">Upper – Final</div>
+          <div class="match-card">
+            <div class="match-label">UB Final</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner SF1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner SF2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower bracket -->
+        <div class="round-column">
+          <div class="round-title">Lower – Round 1</div>
+
+          <div class="match-card">
+            <div class="match-label">LB R1 – Match 1</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB M1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB M2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="match-card">
+            <div class="match-label">LB R1 – Match 2</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB M3" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB M4" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="round-title" style="margin-top:10px;">Lower – Round 2</div>
+          <div class="match-card">
+            <div class="match-label">LB R2 – Match 1</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB SF1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner LB R1 M1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="match-card">
+            <div class="match-label">LB R2 – Match 2</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Loser UB SF2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner LB R1 M2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower final + Grand final -->
+        <div class="round-column">
+          <div class="round-title">Lower – Final</div>
+
+          <div class="match-card">
+            <div class="match-label">LB Final</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner LB R2 M1" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner LB R2 M2" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="round-title" style="margin-top:10px;">Grand Final</div>
+          <div class="match-card">
+            <div class="match-label">Grand Final</div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner UB Final" />
+              <input class="score-input" placeholder="0" />
+            </div>
+            <div class="team-row">
+              <input class="team-input" placeholder="Winner LB Final" />
+              <input class="score-input" placeholder="0" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        Tip: Use this during admin calls or casting – just type team names and scores as matches
+        progress. For bigger brackets (16 teams etc.) you can duplicate this file later and
+        extend the structure.
+      </div>
+    </div>
+
+    <!-- League TAB -->
+    <div id="tab-league" class="tab-content" style="display:none;">
+      <div class="section-title">📊 League / Group Table</div>
+      <div class="section-sub">
+        Simple editable table for up to 10 teams. Fill names and update Wins / Losses / Draws /
+        Points as you go.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th>Team</th>
+            <th style="width:60px;">P</th>
+            <th style="width:60px;">W</th>
+            <th style="width:60px;">L</th>
+            <th style="width:60px;">D</th>
+            <th style="width:70px;">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 10 editable rows -->
+          <!-- You can change 10 to whatever you want later -->
+          <!-- Row template repeated -->
+          <!-- 1 -->
+          <tr>
+            <td>1</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 2 -->
+          <tr>
+            <td>2</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 3 -->
+          <tr>
+            <td>3</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 4 -->
+          <tr>
+            <td>4</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 5 -->
+          <tr>
+            <td>5</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 6 -->
+          <tr>
+            <td>6</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 7 -->
+          <tr>
+            <td>7</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 8 -->
+          <tr>
+            <td>8</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 9 -->
+          <tr>
+            <td>9</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+          <!-- 10 -->
+          <tr>
+            <td>10</td>
+            <td><input class="team-name-input" placeholder="Team name" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+            <td><input class="small-input" placeholder="0" /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        Use this table for:
+        <ul style="margin-top:4px;">
+          <li>Full league formats (everyone plays everyone).</li>
+          <li>Group stages (e.g. Group A / Group B) – you can duplicate this page later for each group.</li>
+          <li>Points systems like 2–0 win = 3 pts, 1–1 = 1 pt, etc. – completely up to TRR rules.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple tab switching
+    const buttons = document.querySelectorAll(".tab-btn");
+    const tabDouble = document.getElementById("tab-double");
+    const tabLeague = document.getElementById("tab-league");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        if (btn.dataset.tab === "double") {
+          tabDouble.style.display = "";
+          tabLeague.style.display = "none";
+        } else {
+          tabDouble.style.display = "none";
+          tabLeague.style.display = "";
+        }
+      });
+    });
+  </script>
+</body>
+</html><!-- HEADER -->
+ <header>
+    <div class="header-inner">
+
+        <div class="brand">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="trr-logo.png" alt="The Roshan Rumble logo" />
+                </a>
+            </div>
+
+            <div>
+                <div class="brand-text-title">The Roshan Rumble (TRR)</div>
+                <div class="brand-text-sub">Community Dota 2 League • SEA</div>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html#about">About</a>
+            <a href="index.html#seasons">Seasons</a>
+            <a href="index.html#team">TRR Team</a>
+            <a href="index.html#socials">Socials</a>
+            <a href="rules.html">Rules & Updates</a>
+            <a href="formats.html">Brackets & League</a>
+        </nav>
+
+    </div>
+</header>
+
+ html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRR – Brackets & League Formats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.18);
+      --accent2: #22c55e;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: rgba(15,23,42,0.96);
+      --border: rgba(31,41,55,0.9);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(249,115,22,0.16), transparent 55%),
+        radial-gradient(circle at bottom, #020617 0, #000 60%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .back {
+      font-size: 13px;
+    }
+
+    .tabs {
+      display: inline-flex;
+      margin-top: 20px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.6);
+      overflow: hidden;
+    }
+    .tab-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--accent), #fb923c);
+      color: #020617;
+      font-weight: 600;
+    }
+
+    .tab-content {
+      margin-top: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    /* Double Elim layout (8-team template) */
+    .bracket-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .round-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 180px;
+    }
+
+    .round-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .match-card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .match-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .team-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .team-input {
+      flex: 1;
+      padding: 3px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: #020617;
+      color: var(--text);
+      font-size: 12px;
+    }
+    .score-input {
+      width: 34px;
+      padding: 3px 4px;
+      border-radius: 6px;
+      border: 1px solid rgba(75,85,99,0.9);
+      background: #020617;
+      color: var(--text);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* League table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    thead {
+      background: rgba(15,23,42,0.96);
+    }
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(31,41,55,0.9);
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .small-input {
+      width: 100%;
+      padding: 3px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: #020617;
+      color: var(--text);
+      font-size: 12px;
+      text-align: center;
+    }
+    .team-name-input {
+      width: 100%;
+      padding: 3px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: #020617;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .info-box {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 12px;
+      color: var(--muted);
+    }
+  
+    /* --- TRR global sticky header --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(15, 6, 3, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(248,250,252,0.06), 0 18px 35px rgba(15,23,42,0.9);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .brand-text-title {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(30,64,175,0.9);
+      border-color: #f97316;
+      transform: translateY(-1px);
+    }
+
+    body {
+      padding-top: 120px;
+    }
+
+    /* Slightly larger base text for readability */
+    .page p,
+    .page li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* --- TRR Watermark Background --- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 900px;
+      height: 900px;
+      background: url('trr-logo.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.04;
+      transform: translate(-50%, -50%) rotate(0deg);
+      z-index: -1;
+      pointer-events: none;
+      animation: trrWatermarkRotate 45s linear infinite;
+    }
+
+    @keyframes trrWatermarkRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+</style>
 </head>
 <body>
   <div class="page">
