@@ -389,6 +389,26 @@
       justify-content: space-between;
       gap: 8px;
     }
+    /* --- TRR Sticky Header --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(15, 6, 3, 0.98);
+  backdrop-filter: blur(8px);
+  padding: 12px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  padding-top: 140px; /* pushes page content down so header doesn't overlap */
+}
+
   </style>
 </head>
 <body>
