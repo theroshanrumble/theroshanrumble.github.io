@@ -390,23 +390,44 @@
       gap: 8px;
     }
     /* --- TRR Sticky Header --- */
+/* --- TRR Sticky Header (centered & slightly bigger) --- */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: rgba(15, 6, 3, 0.98);
-  backdrop-filter: blur(8px);
-  padding: 6px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    background: rgba(15, 6, 3, 0.98);
+    backdrop-filter: blur(8px);
+
+    /* Header height / padding (increased slightly) */
+    padding: 18px 20px;
+
+    /* CENTER everything instead of spread-apart */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* space between logo + buttons */
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* logo + title grouped together cleanly */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Keep nav items in one centered row */
+nav {
+    display: flex;
+    gap: 14px;
 }
 
 body {
-  padding-top: 90px; /* pushes page content down so header doesn't overlap */
+  padding-top: 120px; /* pushes page content down so header doesn't overlap */
 }
 
   </style>
