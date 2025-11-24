@@ -389,8 +389,7 @@
       justify-content: space-between;
       gap: 8px;
     }
-    /* --- TRR Sticky Header (justified + compact) --- */
-/* --- TRR Sticky Header (Aligned with content) --- */
+  /* --- TRR Sticky Header (centered & slightly bigger) --- */
 header {
     position: fixed;
     top: 0;
@@ -401,29 +400,31 @@ header {
     background: rgba(15, 6, 3, 0.98);
     backdrop-filter: blur(8px);
 
-    padding: 18px 40px;   /* <-- SAME 40px padding as your content */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    /* Header height / padding (increased slightly) */
+    padding: 18px 20px;
 
+    /* CENTER everything instead of spread-apart */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 40px; /* space between logo + buttons */
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-
-/* tighten the left brand area */
+/* logo + title grouped together cleanly */
 .brand {
     display: flex;
     align-items: center;
-    gap: 10px; /* reduce spacing */
+    gap: 12px;
 }
 
-/* tighten nav items */
+/* Keep nav items in one centered row */
 nav {
     display: flex;
-    gap: 10px; /* reduce spacing between menu buttons */
+    gap: 14px;
 }
 
-/* ensure page content is pushed down */
 body {
     padding-top: 120px; /* adjust for new header height */
 }
