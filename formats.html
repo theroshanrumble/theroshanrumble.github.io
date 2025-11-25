@@ -319,27 +319,12 @@
       padding-top: 120px;
     }
 
-    /* --- TRR watermark background --- */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 900px;
-      height: 900px;
-      background: url('trr-logo.png') no-repeat center center;
-      background-size: contain;
-      opacity: 0.04;
-      transform: translate(-50%, -50%) rotate(0deg);
-      z-index: -1;
-      pointer-events: none;
-      animation: trrWatermarkRotate 45s linear infinite;
-    }
-
-    @keyframes trrWatermarkRotate {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to   { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+    /* --- TRR Full Background Image --- */
+body {
+    background: url('trr-bg.png') no-repeat center top fixed;
+    background-size: cover;
+    background-color: #020617; /* fallback color */
+}
   </style>
 </head>
 <body>
