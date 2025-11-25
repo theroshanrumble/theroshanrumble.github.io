@@ -32,11 +32,26 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 16px 56px;
-    }
+ .page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Faint background image inside content width */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* fill entire .page area */
+  background: url('trr-bg.png') no-repeat center 80px;
+  background-size: 70%;      /* size of the image – tweak if needed */
+  opacity: 0.06;             /* how faint it is – smaller = more faint */
+  pointer-events: none;
+  z-index: -1;
+}
+
 
     header {
       display: flex;
@@ -440,12 +455,7 @@ nav {
 body {
     padding-top: 120px; /* adjust for new header height */
 }
-/* --- TRR Full Background Image --- */
-body {
-    background: url('trr-bg.png') no-repeat center top fixed;
-    background-size: cover;
-    background-color: #020617; /* fallback color */
-}
+
 
   </style>
 </head>
