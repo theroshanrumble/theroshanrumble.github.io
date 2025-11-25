@@ -52,7 +52,116 @@
       font-size: 12px;
       color: #9ca3af;
       margin-top: 12px;
+    }    /* --- TRR sticky header + watermark (match index) --- */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(15, 6, 3, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(148,163,184,0.35);
     }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(248,250,252,0.06),
+                  0 18px 35px rgba(15,23,42,0.9);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .brand-text-title {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.15s ease,
+                  border-color 0.15s ease,
+                  transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(30,64,175,0.9);
+      border-color: #f97316;
+      transform: translateY(-1px);
+    }
+
+    /* push content down so it doesn't hide behind sticky header */
+    body {
+      padding-top: 120px;
+    }
+
+    /* --- TRR watermark background --- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 900px;
+      height: 900px;
+      background: url('trr-logo.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.04;
+      transform: translate(-50%, -50%) rotate(0deg);
+      z-index: -1;
+      pointer-events: none;
+      animation: trrWatermarkRotate 45s linear infinite;
+    }
+
+    @keyframes trrWatermarkRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
   </style>
 </head>
 <body>
